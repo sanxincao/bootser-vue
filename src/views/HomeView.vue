@@ -1,18 +1,66 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <ProductGrid :products="products" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import ProductGrid from "@/components/ProductGrid.vue";
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    ProductGrid,
+  },
+  data() {
+    return {
+      products: [
+        {
+          id: 1,
+          name: "Product 1",
+          price: 10,
+          image: "https://via.placeholder.com/200x200",
+        },
+        {
+          id: 2,
+          name: "Product 2",
+          price: 20,
+          image: "https://via.placeholder.com/200x200",
+        },
+        {
+          id: 3,
+          name: "Product 3",
+          price: 30,
+          image: "https://via.placeholder.com/200x200",
+        },
+        {
+          id: 1,
+          name: "Product 1",
+          price: 10,
+          image: "https://via.placeholder.com/200x200",
+        },
+        {
+          id: 2,
+          name: "Product 2",
+          price: 20,
+          image: "https://via.placeholder.com/200x200",
+        },
+        {
+          id: 3,
+          name: "Product 3",
+          price: 30,
+          image: "https://via.placeholder.com/200x200",
+        },
+        
+      ] as Product[],
+    };
   },
 });
 </script>
