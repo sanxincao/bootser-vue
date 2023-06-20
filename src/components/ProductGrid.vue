@@ -1,7 +1,7 @@
 <template>
   <div class="product-grid-container">
     <div class="product-grid">
-      <div v-for="product in products" :key="product.id" class="product-grid-item">
+      <div v-for="product in products" :key="product.id" class="product-grid-item" @click="goToBuyPage(product.id)">
         <img :src="product.image" :alt="product.name" />
         <h3>{{ product.name }}</h3>
         <p>{{ product.price }}</p>
@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
 
 interface Product {
   id: number;
@@ -28,6 +29,12 @@ export default defineComponent({
       required: true,
     },
   },
+  methods: {
+    goToBuyPage(id: number): void {
+      this.$router.push(`/buy/${id}`);
+    },
+  },
+  
 });
 </script>
 <style scoped>

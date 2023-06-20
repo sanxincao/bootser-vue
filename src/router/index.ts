@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ProductView from '../views/BuyPageView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,12 @@ const routes: Array<RouteRecordRaw> = [
     path:'/register',
     name:'register',
     component: () => import(/* webpackChunkName: "register" */ '../views/RegisterView.vue')
+  },
+  {
+    path: '/buy/:id',
+    name: 'BuyPage',
+    component: ProductView,
+    props: true
   },
 ]
 
