@@ -10,7 +10,7 @@ export const products = [
         0: '0level',
         26: '26level',
         37: '37level',
-        54: '54level',
+        74: '74level',
         90: '90level',
       },
     },
@@ -20,5 +20,13 @@ export const products = [
       description: "Description of Product 2",
       price: 200,
       image: "https://example.com/product2.jpg",
+      value2: [16, 48],
+      marks: {
+        0: '0level',
+        26: '26level',
+        37: '37level',
+        54: '54level',
+        90: '90level',
+      },
     },
 ];

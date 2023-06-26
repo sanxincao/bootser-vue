@@ -15,7 +15,7 @@
   <script lang="ts">
   import { defineComponent, computed , ref} from "vue";
   import antslider from "@/components/NotIncluSlider.vue";
-
+  import { products } from '@/store/data';
 
   export default defineComponent({
     components: {
@@ -32,23 +32,6 @@
     product() {
       // 根据路由参数获取商品信息
       const id = Number(this.$route.params.id);
-      const products = [
-        {
-          id: 1,
-          name: "Product 1",
-          description: "Description of Product 1",
-          price: 100,
-          image: "https://example.com/product1.jpg",
-        },
-        {
-          id: 2,
-          name: "Product 2",
-          description: "Description of Product 2",
-          price: 200,
-          image: "https://example.com/product2.jpg",
-        },
-        // ...
-      ];
       return products.find((p) => p.id === id);
     },
   },
