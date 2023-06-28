@@ -4,7 +4,7 @@
       <p>{{ product.description }}</p>
       <p>{{ product?.price }}</p>
       <form @submit.prevent="buy">
-        <antslider />
+        <antslider v-if="showSlider"/>
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" v-model.number="quantity" required />
         <button type="submit">Buy</button>
@@ -23,7 +23,6 @@
   },
   data() {
     return {
-     
       quantity: 1,
     };
   },
@@ -33,6 +32,11 @@
       // 根据路由参数获取商品信息
       const id = Number(this.$route.params.id);
       return products.find((p) => p.id === id);
+    },
+    showSlider() : boolean {
+      const id = Number(this.$route.params.id);
+      const producttemp = products.find((p) => p.id === id);
+      return producttemp?.marks !== undefined;
     },
   },
 

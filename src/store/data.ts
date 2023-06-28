@@ -21,14 +21,6 @@ export const products = [
       description: "Description of Product 2",
       price: 15,
       image: "https://example.com/product2.jpg",
-      value2: [16, 48],
-      marks: {
-        0: '0level',
-        26: '26level',
-        37: '37level',
-        54: '54level',
-        90: '90level',
-      },
     },
     {
       id: 4,
@@ -36,17 +28,14 @@ export const products = [
       description: "Description of Product 2",
       price: 200,
       image: "https://example.com/product2.jpg",
-      value2: [16, 48],
-      marks: {
-        0: '0level',
-        26: '26level',
-        37: '37level',
-        54: '54level',
-        90: '90level',
+      mission: {
+        'task1':80,
+        'task2':90,
+        'task3':100,
       },
     },
     {
-      id: 2,
+      id: 5,
       name: "Product 2",
       description: "Description of Product 2",
       price: 200,
@@ -61,7 +50,7 @@ export const products = [
       },
     },
     {
-      id: 2,
+      id: 6,
       name: "Product 2",
       description: "Description of Product 2",
       price: 200,
