@@ -36,7 +36,7 @@ export const products = [
     },
     {
       id: 5,
-      name: "Product 2",
+      name: "武器提升",
       description: "Description of Product 2",
       price: 200,
       image: "https://example.com/product2.jpg",

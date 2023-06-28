@@ -3,8 +3,10 @@
       <h1>Buy {{ product.name }}</h1>
       <p>{{ product.description }}</p>
       <p>{{ product?.price }}</p>
+      <antcheckbox />
       <form @submit.prevent="buy">
         <antslider v-if="showSlider"/>
+        
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" v-model.number="quantity" required />
         <button type="submit">Buy</button>
@@ -15,11 +17,13 @@
   <script lang="ts">
   import { defineComponent, computed , ref} from "vue";
   import antslider from "@/components/NotIncluSlider.vue";
+  import antcheckbox from "@/components/CheckBox.vue";
   import { products } from '@/store/data';
 
   export default defineComponent({
     components: {
-      antslider
+      antslider,
+      antcheckbox
   },
   data() {
     return {

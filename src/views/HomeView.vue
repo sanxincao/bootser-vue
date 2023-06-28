@@ -41,19 +41,19 @@ export default defineComponent({
           image: "https://via.placeholder.com/200x200",
         },
         {
-          id: 1,
+          id: 4,
           name: "Product 1",
           price: 10,
           image: "https://via.placeholder.com/200x200",
         },
         {
-          id: 2,
+          id: 5,
           name: "Product 2",
           price: 20,
           image: "https://via.placeholder.com/200x200",
         },
         {
-          id: 3,
+          id: 6,
           name: "Product 3",
           price: 30,
           image: "https://via.placeholder.com/200x200",
