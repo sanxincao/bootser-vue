@@ -9,14 +9,14 @@
       </a-checkbox>
     </div>
     <a-divider />
-    <a-checkbox-group v-model:value="checkedList" :options="plainOptions" :column="1"  />
+    <a-checkbox-group v-model:value="checkedList" :options="missionKeys" :column="1"  />
   </template>
   <script lang="ts">
   import { defineComponent, reactive, toRefs, watch ,computed, getCurrentInstance} from 'vue';
   import { Checkbox,Divider, CheckboxGroup } from 'ant-design-vue';
   import { products } from '@/store/data';
   import 'ant-design-vue/dist/antd.css'; 
-  const plainOptions = ['Apple', 'Pear', 'Orange'];
+  
   export default defineComponent({
     components: {
     'a-checkbox': Checkbox,
@@ -31,35 +31,47 @@
       return product ? { mission: product.mission } : null;
     });
     const missionKeys = computed(() => {
-  if (redRef.value) {
-    return Object.keys(redRef.value.mission);
-  } else {
-    return [];
-  }
-});
-      const state = reactive({
+      const keys: string[] = [];
+      const addKeys = (obj: Record<string, any>) => {
+        for (const key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            keys.push(key);
+            if (typeof obj[key] === 'object') {
+              addKeys(obj[key]);
+            }
+          }
+        }
+      };
+      if (redRef.value) {
+        addKeys(redRef.value.mission as Record<string, any>);
+      }
+      return keys;
+    });
+    const state = reactive({
+        checkedList: missionKeys.value,
         indeterminate: true,
         checkAll: false,
-        checkedList: ['Apple', 'Orange'],
       });
+    
   
       const onCheckAllChange = (e: any) => {
         Object.assign(state, {
-          checkedList: e.target.checked ? plainOptions : [],
+          checkedList: e.target.checked ? missionKeys.value : [],
           indeterminate: false,
         });
       };
       watch(
         () => state.checkedList,
         val => {
-          state.indeterminate = !!val.length && val.length < plainOptions.length;
-          state.checkAll = val.length === plainOptions.length;
+          state.indeterminate = !!val.length && val.length < missionKeys.value.length;
+          state.checkAll = val.length === missionKeys.value.length;
         },
       );
-  
+      // const missionvalue=missionKeys
+      console.log(missionKeys.value)
       return {
         ...toRefs(state),
-        plainOptions,
+        missionKeys: missionKeys.value,
         onCheckAllChange,
       };
     },
