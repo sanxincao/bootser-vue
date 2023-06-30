@@ -9,7 +9,7 @@
       </a-checkbox>
     </div>
     <a-divider />
-    <a-checkbox-group v-model:value="checkedList" :options="missionKeys" :column="1"  />
+    <a-checkbox-group v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
   </template>
   <script lang="ts">
   import { defineComponent, reactive, toRefs, watch ,computed, getCurrentInstance} from 'vue';
