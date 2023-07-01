@@ -34,9 +34,9 @@
     const product = computed(() => {
       // 根据路由参数获取商品信息
       const id = Number(Currentinstance?.proxy?.$route.params.id);
-      return products.find((p) => p.id === id);
+      return (products.find((p) => p.id === id)) ||  { price: 0 } ;
     });
-    Sumprice=product.price*quantity
+    Sumprice.value= product.value.price  *quantity.value
     const showSlider = computed(() => {
       const id = Number(Currentinstance?.proxy?.$route.params.id);
       const producttemp = products.find((p) => p.id === id);
