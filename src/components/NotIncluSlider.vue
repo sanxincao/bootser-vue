@@ -1,7 +1,7 @@
 <template>
     <div id="components-slider-demo-mark">
       
-      <a-slider v-model:value="valueRef" :min="0" :max="90"  range :marks="mark">
+      <a-slider v-model:value="valueRef" :min="0" :max="90"  range :marks="mark" >
         <template #mark="{ label, point }">
           <template v-if="point ===90">
             <strong>{{ label }}</strong>
@@ -12,7 +12,7 @@
     </div>         
   </template>
   <script lang="ts">
-  import { defineComponent, ref,computed,getCurrentInstance } from 'vue';
+  import { defineComponent, ref,computed,getCurrentInstance,watch } from 'vue';
   import { Slider } from 'ant-design-vue';
   import { products } from '@/store/data';
   import 'ant-design-vue/dist/antd.css'; 
@@ -25,6 +25,7 @@
   setup() {
     
     const instance = getCurrentInstance();
+    const range = ref(1.0);
     const redRef = computed(() => {
       const id = Number(instance?.proxy?.$route.params.id);
       const product = products.find((p) => p.id === id);
@@ -39,6 +40,13 @@
         
   
     mark.value = redRef.value?.mark ? {...mark.value, ...redRef.value.mark} : mark.value;
+    
+    watch(valueRef, () => {
+      const min = Math.min(...valueRef.value);
+      const max = Math.max(...valueRef.value);
+      range.value = max - min;
+      
+    });
     
     return {
       redRef,
