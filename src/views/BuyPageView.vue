@@ -3,19 +3,19 @@
       <h1>Buy {{ product.name }}</h1>
       <p>{{ product.description }}</p>
       <p>{{ product?.price }}</p>
-      <antcheckbox v-if="ShowCheckbox"/>
+      <antcheckbox v-if="ShowCheckbox" />
       <form @submit.prevent="buy">
-        <antslider v-if="showSlider"/>
+        <antslider v-if="showSlider" @range-change:value="handleSliderChange"/>
         
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" v-model.number="quantity" required />
-        <button type="submit">Buy</button>
+        <button type="submit" >Buy</button>
       </form>
     </div>
   </template>
   
   <script lang="ts">
-  import { defineComponent, computed , ref,getCurrentInstance} from "vue";
+  import { defineComponent, computed , ref,getCurrentInstance,onMounted} from "vue";
   import antslider from "@/components/NotIncluSlider.vue";
   import antcheckbox from "@/components/CheckBox.vue";
   import { products } from '@/store/data';
@@ -42,6 +42,11 @@
       const producttemp = products.find((p) => p.id === id);
       return producttemp?.marks !== undefined;
     });
+    //获取子组件emit range-change:value携带的值
+    function handleSliderChange(value: number) {
+      console.log("handleSliderChange:", value);
+      Sumprice.value+=value;
+    }
 
     const ShowCheckbox = computed(() => {
       const id = Number(Currentinstance?.proxy?.$route.params.id);
@@ -62,6 +67,7 @@
       product,
       showSlider,
       ShowCheckbox,
+      handleSliderChange,
       buy,
     };
   },
