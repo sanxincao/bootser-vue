@@ -12,7 +12,7 @@
     <a-checkbox-group v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
   </template>
   <script lang="ts">
-  import { defineComponent, reactive, toRefs, watch ,computed, getCurrentInstance} from 'vue';
+  import { defineComponent, reactive, toRefs, watch ,ref,computed, getCurrentInstance} from 'vue';
   import { Checkbox,Divider, CheckboxGroup } from 'ant-design-vue';
   import { products } from '@/store/data';
   import 'ant-design-vue/dist/antd.css'; 
@@ -23,8 +23,16 @@
     'a-divider': Divider, 
     'a-checkbox-group': CheckboxGroup,
   },
-    setup() {
+  props: {
+    missionvalue: {
+    type: Number,
+    default: 0,
+  },
+  },
+  emits: ['checkbox-change:value'],
+    setup(props, { emit }) {
       const instance = getCurrentInstance();
+      const CheckValue = ref(props.missionvalue);
       const redRef = computed(() => {
       const id = Number(instance?.proxy?.$route.params.id);
       const product = products.find((p) => p.id === id);
@@ -47,6 +55,9 @@
       }
       return keys;
     });
+
+
+    
     const state = reactive({
         checkedList: missionKeys.value,
         indeterminate: true,
@@ -65,10 +76,17 @@
         val => {
           state.indeterminate = !!val.length && val.length < missionKeys.value.length;
           state.checkAll = val.length === missionKeys.value.length;
+          //获取 state.checkedList长度并循环获取其值
+          for (let i = 0; i < state.checkedList.length; i++) {
+            //获取state.checkedList中的值
+            const value = state.checkedList[i];
+            //触发自定义事件
+            CheckValue.value+=redRef.value?.mission?.task1 as number;
+            console.log(CheckValue.value);
+          }
         },
       );
-      // const missionvalue=missionKeys
-      console.log(missionKeys.value)
+      
       return {
         ...toRefs(state),
         missionKeys: missionKeys.value,

@@ -55,7 +55,6 @@
       const min = Math.min(...valueRef.value);
       const max = Math.max(...valueRef.value);
       range.value = max - min;
-      console.log("emit:", range.value);
       // 触发自定义事件
       emit("range-change:value", range.value);
     }

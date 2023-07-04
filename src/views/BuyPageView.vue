@@ -44,8 +44,8 @@
     });
     //获取子组件emit range-change:value携带的值
     function handleSliderChange(value: number) {
-      console.log("handleSliderChange:", value);
       Sumprice.value+=value;
+      console.log("handleSliderChange:value",Sumprice.value)
     }
 
     const ShowCheckbox = computed(() => {
