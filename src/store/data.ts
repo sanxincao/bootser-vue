@@ -1,3 +1,8 @@
+const missionmap=new Map([
+['task1',80],
+  ['task2',90],
+  ['task3',100]]
+); 
 export const products = [
     {
       id: 1,
@@ -28,11 +33,7 @@ export const products = [
       description: "Description of Product 2",
       price: 200,
       image: "https://example.com/product2.jpg",
-      mission: {
-        'task1':80,
-        'task2':90,
-        'task3':100,
-      },
+      missionmap,
     },
     {
       id: 5,

@@ -36,24 +36,11 @@
       const redRef = computed(() => {
       const id = Number(instance?.proxy?.$route.params.id);
       const product = products.find((p) => p.id === id);
-      return product ? { mission: product.mission } : null;
+      return product ? { missionmap: product.missionmap } : null;
     });
     const missionKeys = computed(() => {
-      const keys: string[] = [];
-      const addKeys = (obj: Record<string, any>) => {
-        for (const key in obj) {
-          if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            keys.push(key);
-            if (typeof obj[key] === 'object') {
-              addKeys(obj[key]);
-            }
-          }
-        }
-      };
-      if (redRef.value) {
-        addKeys(redRef.value.mission as Record<string, any>);
-      }
-      return keys;
+      //获取redRef missionmap数据中的key值并转换为数组
+      return redRef.value?.missionmap ? Array.from(redRef.value.missionmap.keys()) : [];
     });
 
 
@@ -80,15 +67,18 @@
           for (let i = 0; i < state.checkedList.length; i++) {
             //获取state.checkedList中的值
             const value = state.checkedList[i];
-            //触发自定义事件
-            CheckValue.value+=redRef.value?.mission?.task1 as number;
-            console.log(CheckValue.value);
+            //用value作为mission的key获取对应的value值
+            CheckValue.value+=redRef.value?.missionmap?.get(value) as number;
+            console.log("CheckValue",CheckValue.value)
+            emit("checkbox-change:value",CheckValue.value);
           }
+          CheckValue.value=0;
         },
       );
       
       return {
         ...toRefs(state),
+        CheckValue,
         missionKeys: missionKeys.value,
         onCheckAllChange,
       };
