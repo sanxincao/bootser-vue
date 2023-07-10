@@ -3,7 +3,7 @@
       <h1>Buy {{ product.name }}</h1>
       <p>{{ product.description }}</p>
       <p>{{ product?.price }}</p>
-      <antcheckbox v-if="ShowCheckbox" />
+      <antcheckbox v-if="ShowCheckbox" @checkbox-change:value="handleCheckboxChange"/>
       <form @submit.prevent="buy">
         <antslider v-if="showSlider" @range-change:value="handleSliderChange"/>
         
@@ -47,18 +47,24 @@
       Sumprice.value+=value;
       console.log("handleSliderChange:value",Sumprice.value)
     }
+    //获取子组件emit checkbox-change:value携带的值
+    function handleCheckboxChange(value: number) {
+      Sumprice.value+=value;
+      console.log("handleCheckboxChange:value",value)
+      console.log("handleCheckboxChange:Sumprice",Sumprice.value)
+    }
 
     const ShowCheckbox = computed(() => {
       const id = Number(Currentinstance?.proxy?.$route.params.id);
       const producttemp = products.find((p) => p.id === id);
-      return producttemp?.mission !== undefined;
+      return producttemp?.missionmap !== undefined;
     });
 
     const buy = () => {
       // 购买商品
       instance.post("/buy", {
         id: Number(Currentinstance?.proxy?.$route.params.id),
-        quantity: quantity.value,
+        price: Sumprice.value,
       });
     };
 
@@ -68,6 +74,7 @@
       showSlider,
       ShowCheckbox,
       handleSliderChange,
+      handleCheckboxChange,
       buy,
     };
   },
