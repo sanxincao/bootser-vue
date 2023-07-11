@@ -1,11 +1,13 @@
 <template>
     <div class="buy-page">
-      <h1>Buy {{ product.name }}</h1>
-      <p>{{ product.description }}</p>
-      <p>{{ product?.price }}</p>
-      <antcheckbox v-if="ShowCheckbox" @checkbox-change:value="handleCheckboxChange"/>
-      <form @submit.prevent="buy">
+      <div class="product-info">
+        <h1>Buy {{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p>{{ product?.price }}</p>
+        <antcheckbox v-if="ShowCheckbox" @checkbox-change:value="handleCheckboxChange"/>
         <antslider v-if="showSlider" @range-change:value="handleSliderChange"/>
+    </div>
+      <form @submit.prevent="buy">
         
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" v-model.number="quantity" required />
@@ -82,3 +84,22 @@
    
   });
   </script>
+  <style>
+  .buy-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .product-info {
+    width: 50%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+  
+  .buy-form {
+    width: 50%;
+    padding: 20px;
+  }
+  </style>

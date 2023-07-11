@@ -1,5 +1,6 @@
 <template>
-    <div>
+  
+    <div class="custom-checkbox">
       <a-checkbox
         v-model:checked="checkAll"
         :indeterminate="indeterminate"
@@ -7,9 +8,12 @@
       >
         Check all
       </a-checkbox>
-    </div>
+   
+
     <a-divider />
-    <a-checkbox-group v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
+    
+      <a-checkbox-group v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
+    </div>
   </template>
   <script lang="ts">
   import { defineComponent, reactive, toRefs, watch ,ref,computed, getCurrentInstance} from 'vue';
@@ -86,4 +90,20 @@
   });
   </script>
   
+<style>
+.custom-checkbox {
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+}
+
+a-checkbox {
+  margin-bottom: 16px;
+}
+a-checkbox .ant-checkbox-inner,
+a-checkbox-group .ant-checkbox-group-item-label {
+  color: white !important;
+}
+</style>
   
