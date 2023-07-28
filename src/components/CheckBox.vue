@@ -1,7 +1,7 @@
 <template>
   
     <div class="custom-checkbox">
-      <a-checkbox
+      <a-checkbox id="checkAll"
         v-model:checked="checkAll"
         :indeterminate="indeterminate"
         @change="onCheckAllChange"
@@ -12,7 +12,7 @@
 
     <a-divider />
     
-      <a-checkbox-group v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
+      <a-checkbox-group id="checkgroup" v-model:value="checkedList" :options="missionKeys" style="display:grid"  />
     </div>
   </template>
   <script lang="ts">
@@ -95,7 +95,7 @@
   display: flex;
   color: white;
   flex-direction: column;
-  align-items: center;
+  margin-right: 0;
 }
 
 a-checkbox {
@@ -103,6 +103,7 @@ a-checkbox {
 }
 a-checkbox .ant-checkbox-inner,
 a-checkbox-group .ant-checkbox-group-item-label {
+  
   color: white !important;
 }
 </style>

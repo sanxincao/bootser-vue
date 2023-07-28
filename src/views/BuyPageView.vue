@@ -86,20 +86,65 @@
   </script>
   <style>
   .buy-page {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .product-info {
-    width: 50%;
-    background-color: black;
-    color: white;
-    padding: 20px;
-  }
-  
-  .buy-form {
-    width: 50%;
-    padding: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-info {
+  width: 50%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-info h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.product-info p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.product-info p:last-child {
+  margin-bottom: 16px;
+}
+
+.buy-form {
+  width: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.buy-form label {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.buy-form input[type="number"] {
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.buy-form button[type="submit"] {
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-form button[type="submit"]:hover {
+  background-color: #40a9ff;
+}
   </style>
