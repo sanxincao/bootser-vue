@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Header from "@/components/MyAppheader.vue";
-import Footer from "@/components/Footer.vue";
+import Footer from "@/components/FooterCom.vue";
 export default defineComponent({
   components: {
     Header,
@@ -19,6 +19,7 @@ export default defineComponent({
 <style lang="less">
 
 #app {
+  
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

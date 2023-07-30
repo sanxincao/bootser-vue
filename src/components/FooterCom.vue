@@ -14,25 +14,29 @@
   
   <style>
   .footer {
-    background-color: #f5f5f5;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .links {
-    display: flex;
-  }
-  
-  .links a {
-    margin-right: 16px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .disclaimer {
-    font-size: 14px;
-    color: #999;
-  }
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  margin-right: 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.disclaimer {
+  font-size: 14px;
+  color: #999;
+}
   </style>
