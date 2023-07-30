@@ -50,6 +50,7 @@
 
     
     const state = reactive({
+      
         checkedList: missionKeys.value,
         indeterminate: true,
         checkAll: false,
